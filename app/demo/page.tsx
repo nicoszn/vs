@@ -94,12 +94,12 @@ function PortfolioCard() {
         padding: "1.25rem"
       }}
     >
-      <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: "var(--color-muted)", marginButtom: "0.25rem" }}>
+      <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: "var(--color-muted)", marginBottom: "0.25rem" }}>
         Total Portfolio Value
       </p>
       <p
         className="font-display font-bold mb-4"
-        style={{ fontSize: "2.2rem", color: "var(--color-ghost)", marginButtom: "1rem"}}
+        style={{ fontSize: "2.2rem", color: "var(--color-ghost)", marginBottom: "1rem"}
       >
         ${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       </p>
@@ -118,7 +118,7 @@ function PortfolioCard() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="font-mono text-xs" style={{ color: "var(--color-ghost)", marginButtom: "0.25rem" }}>
+                  <span className="font-mono text-xs" style={{ color: "var(--color-ghost)", marginBottom: "0.25rem" }}>
                     {a.symbol}
                   </span>
                   <span
@@ -183,7 +183,7 @@ function GameCard({ name, prize, ends, players, type }: (typeof ACTIVE_GAMES)[0]
       </div>
 
       <div className="flex-1 min-w-0">
-        <p className="font-mono text-xs font-medium truncate mb-1" style={{ color: "var(--color-ghost)", marginButtom: "0.25rem" }}>
+        <p className="font-mono text-xs font-medium truncate mb-1" style={{ color: "var(--color-ghost)", marginBottom: "0.25rem" }}>
           {name}
         </p>
         <p className="font-mono text-xs" style={{ color: "var(--color-muted)" }}>
