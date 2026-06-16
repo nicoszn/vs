@@ -99,7 +99,7 @@ function PortfolioCard() {
       </p>
       <p
         className="font-display font-bold mb-4"
-        style={{ fontSize: "2.2rem", color: "var(--color-ghost)", marginBottom: "1rem"}
+        style={{ fontSize: "2.2rem", color: "var(--color-ghost)", marginBottom: "1rem"}}
       >
         ${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       </p>
