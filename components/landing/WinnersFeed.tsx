@@ -51,6 +51,8 @@ function WinnerCard({
         border: "1px solid var(--color-border)",
         animation: isNew ? "slide-in-right 0.45s cubic-bezier(0.2, 0.8, 0.4, 1) forwards" : "none",
         transition: "border-color 0.3s ease",
+        paddingBlock: "10px",
+        paddingInline: "20px"
       }}
     >
       {/* Avatar placeholder */}
