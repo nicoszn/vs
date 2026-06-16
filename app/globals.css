@@ -2,27 +2,30 @@
 
 /* ── 1. THEME CONFIGURATION ─────────────────────────── */
 @theme {
-  /* Your Vibrant Neon Theme Palette Token Variables */
-  --color-void:          #05050A; 
-  --color-deep:          #0A0A14; 
-  --color-surface:       #0F1126; 
-  --color-card:          #161933; 
-  --color-border:        #282D5C; 
+  /* Your Vibrant Neon Theme Palette Token --color-void:          #1A0B2E; /* Deep saturated comic grape background */
+  --color-deep:          #240F41; /* Rich purple shadow foundation */
+  --color-surface:       #31145A; /* Vibrant mid-tone grape */
+  --color-card:          #421B79; /* Saturated pop-art card base */
+  --color-border:        #FF007F; /* Blazing Hot Pink separator outlines */
 
-  --color-indigo:        #6D28D9; 
-  --color-indigo-bright: #A855F7; 
-  --color-indigo-glow:   rgba(168, 85, 247, 0.35); 
+  /* Primary Accent: Hot Magenta / Neon Pink */
+  --color-indigo:        #FF007F; /* High-voltage neon pink */
+  --color-indigo-bright: #FF5EA5; /* Bubblegum highlight breakout */
+  --color-indigo-glow:   rgba(255, 0, 127, 0.45); /* Intense cartoon pink glow */
 
-  --color-gold:          #FACC15; 
-  --color-gold-dim:      #EAB308; 
-  --color-gold-glow:     rgba(250, 204, 21, 0.25); 
+  /* Secondary Accent: Laser Lime / Electric Yellow */
+  --color-gold:          #CCFF00; /* Radioactive lime-yellow */
+  --color-gold-dim:      #A3CC00; /* Deep cartoon chartreuse */
+  --color-gold-glow:     rgba(204, 255, 0, 0.35); /* Electric slime-lime radiation glow */
 
-  --color-green:         #10B981; 
-  --color-red:           #F43F5E; 
+  /* Status Utilities */
+  --color-green:         #00FFCC; /* Saturated plastic teal */
+  --color-red:           #FF3333; /* Bright tomato comic red */
 
-  --color-ghost:         #F8FAFC; 
-  --color-muted:         #94A3B8; 
-  --color-dim:           #475569;
+  /* Comic Book High Contrast Typography */
+  --color-ghost:         #FFFFFF; /* Pure paper white text */
+  --color-muted:         #39FF14; /* Slime Green helper text / secondary callouts */
+  --color-dim:           #8E56FF; /* Saturated medium-violet utility text */
 
   /* Custom Font Bindings */
   --font-display:        "Clash Display", sans-serif;
@@ -97,7 +100,7 @@
   src: url("https://fontshare.com[]=clash-display@400,500,600,700&display=swap");
 }
 
-@layer base {
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -129,7 +132,7 @@
     background: var(--color-border);
     border-radius: 4px;
   }
-}
+
 
 /* ── 3. TAILWIND V4 UTILITY CLASS DEFINITIONS ────────── */
 @utility invex-root {
