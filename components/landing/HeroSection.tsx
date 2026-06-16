@@ -115,7 +115,7 @@ function JackpotCounter() {
   const prev = JACKPOT_AMOUNTS[prevIndex];
 
   return (
-    <div className="relative flex flex-col items-center">
+    <div className="relative flex flex-col items-center py-2">
       {/* Confetti burst above the number */}
       <div
         className="absolute -top-8 left-1/2 -translate-x-1/2 pointer-events-none"
