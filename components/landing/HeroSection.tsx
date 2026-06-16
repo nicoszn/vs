@@ -178,7 +178,7 @@ function CryptoPill({
         background: "var(--color-card)",
         border: "1px solid var(--color-border)",
         color: positive ? "var(--color-green)" : "var(--color-red)",
-        paddingInline: "0.4rem 0.8rem"
+        padding: "0.4rem 0.8rem"
       }}
     >
       <span style={{ color: "var(--color-ghost)" }}>{symbol}</span>
