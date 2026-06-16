@@ -1,8 +1,4 @@
-/**
- * components/LinkChecker.tsx
- * Standalone React component that uses the linkChecker library.
- * Provides an input for a URL, runs the check, and displays a detailed report.
- */
+'use client'
 
 import React, { useState } from 'react';
 import { crawlLinks, checkLinks, type LinkResult } from '../lib/linkChecker';
