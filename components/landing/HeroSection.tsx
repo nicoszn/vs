@@ -337,6 +337,7 @@ export default function HeroSection() {
             background: "var(--color-card)",
             border: "1px solid var(--color-border)",
             color: "var(--color-muted)",
+            padding: "0.50rem 1rem",
           }}
         >
           <span
