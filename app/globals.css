@@ -1,182 +1,171 @@
 @import "tailwindcss";
 
-/* ── 1. THEME CONFIGURATION ─────────────────────────── */
+/* ── Invex Design Tokens ──────────────────────────────── */
 @theme {
-  /* Your Vibrant Neon Theme Palette Token --color-void:          #1A0B2E; /* Deep saturated comic grape background */
-  --color-deep:          #240F41; /* Rich purple shadow foundation */
-  --color-surface:       #31145A; /* Vibrant mid-tone grape */
-  --color-card:          #421B79; /* Saturated pop-art card base */
-  --color-border:        #FF007F; /* Blazing Hot Pink separator outlines */
+  /* Palette */
+  --color-void:    #080B14;
+  --color-deep:    #0D1120;
+  --color-surface: #131829;
+  --color-card:    #1A1F35;
+  --color-border:  #252C4A;
 
-  /* Primary Accent: Hot Magenta / Neon Pink */
-  --color-indigo:        #FF007F; /* High-voltage neon pink */
-  --color-indigo-bright: #FF5EA5; /* Bubblegum highlight breakout */
-  --color-indigo-glow:   rgba(255, 0, 127, 0.45); /* Intense cartoon pink glow */
+  --color-indigo:  #5B4FE8;
+  --color-indigo-bright: #7B70FF;
+  --color-indigo-glow:   rgba(91, 79, 232, 0.25);
 
-  /* Secondary Accent: Laser Lime / Electric Yellow */
-  --color-gold:          #CCFF00; /* Radioactive lime-yellow */
-  --color-gold-dim:      #A3CC00; /* Deep cartoon chartreuse */
-  --color-gold-glow:     rgba(204, 255, 0, 0.35); /* Electric slime-lime radiation glow */
+  --color-gold:    #F5C542;
+  --color-gold-dim: #C49A1E;
+  --color-gold-glow: rgba(245, 197, 66, 0.2);
 
-  /* Status Utilities */
-  --color-green:         #00FFCC; /* Saturated plastic teal */
-  --color-red:           #FF3333; /* Bright tomato comic red */
+  --color-green:   #22C55E;
+  --color-red:     #EF4444;
 
-  /* Comic Book High Contrast Typography */
-  --color-ghost:         #FFFFFF; /* Pure paper white text */
-  --color-muted:         #39FF14; /* Slime Green helper text / secondary callouts */
-  --color-dim:           #8E56FF; /* Saturated medium-violet utility text */
+  --color-ghost:   #E8EDF7;
+  --color-muted:   #6B7280;
+  --color-dim:     #374151;
 
-  /* Custom Font Bindings */
-  --font-display:        "Clash Display", sans-serif;
-  --font-body:           var(--font-sans);
+  /* Typography */
+  --font-display: "Clash Display", var(--font-inter), sans-serif;
+  --font-body:    var(--font-inter), sans-serif;
+  --font-mono:    var(--font-dm-mono), "Courier New", monospace;
 
-  /* Animation Bindings */
-  --animate-border-spin:    border-spin 4s linear infinite;
-  --animate-slot-spin:      slot-spin 1s linear infinite;
-  --animate-confetti-pop:   confetti-pop 0.6s ease-out forwards;
-  --animate-pulse-ring:     pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-float:          float 3s ease-in-out infinite;
-  --animate-shimmer:        shimmer 3s linear infinite;
-  --animate-slide-in-right: slide-in-right 0.4s ease-out forwards;
-  --animate-fade-out:       fade-out 0.3s ease-in forwards;
-  --animate-orb-pulse:      orb-pulse 4s ease-in-out infinite;
-  --animate-digit-flash:    digit-flash 0.5s ease-out;
+  /* Spacing extras */
+  --spacing-section: 5rem;
 
-  /* Keyframe Definitions mapped natively into v4 engine */
-  @keyframes border-spin {
-    from { --gradient-angle: 0deg; }
-    to   { --gradient-angle: 360deg; }
-  }
-  @keyframes slot-spin {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-100%); }
-  }
-  @keyframes confetti-pop {
-    0%   { transform: scale(0) rotate(0deg); opacity: 1; }
-    80%  { transform: scale(1.2) rotate(20deg); opacity: 1; }
-    100% { transform: scale(0) rotate(40deg); opacity: 0; }
-  }
-  @keyframes pulse-ring {
-    0%   { transform: scale(0.8); opacity: 1; }
-    100% { transform: scale(2.4); opacity: 0; }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-12px); }
-  }
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes slide-in-right {
-    from { transform: translateX(120%); opacity: 0; }
-    to   { transform: translateX(0);    opacity: 1; }
-  }
-  @keyframes fade-out {
-    from { opacity: 1; }
-    to   { opacity: 0; }
-  }
-  @keyframes orb-pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50%       { opacity: 0.7; transform: scale(1.1); }
-  }
-  @keyframes digit-flash {
-    0%   { color: var(--color-gold); text-shadow: 0 0 30px rgba(250, 204, 21, 0.9); }
-    100% { color: var(--color-ghost); text-shadow: none; }
-  }
+  /* Radius */
+  --radius-card: 0.75rem;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
 }
 
-/* Custom Property Registration for Conic Gradients */
+/* ── Base Reset ───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ghost);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Invex root wrapper ───────────────────────────────── */
+.invex-root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Clash Display font face (loaded via CDN in HTML) ─── */
+@font-face {
+  font-family: "Clash Display";
+  src: url("https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap");
+}
+
+/* ── Custom scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+/* ── Utility classes ──────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* Glow effects */
+.glow-indigo {
+  box-shadow: 0 0 24px var(--color-indigo-glow), 0 0 48px var(--color-indigo-glow);
+}
+.glow-gold {
+  box-shadow: 0 0 24px var(--color-gold-glow), 0 0 48px var(--color-gold-glow);
+}
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(245, 197, 66, 0.6);
+}
+.text-glow-indigo {
+  text-shadow: 0 0 20px rgba(91, 79, 232, 0.8);
+}
+
+/* Grid noise texture overlay */
+.grid-noise {
+  background-image:
+    linear-gradient(rgba(91, 79, 232, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 79, 232, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animated gradient border */
+@keyframes border-spin {
+  from { --gradient-angle: 0deg; }
+  to   { --gradient-angle: 360deg; }
+}
+
 @property --gradient-angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-/* ── 2. FONTS AND BASE LAYER RESETS ─────────────────── */
-@font-face {
-  font-family: "Clash Display";
-  src: url("https://fontshare.com[]=clash-display@400,500,600,700&display=swap");
-}
-
-
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    background-color: var(--color-void);
-    color: var(--color-ghost);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* Custom scrollbars */
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--color-void);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 4px;
-  }
-
-
-/* ── 3. TAILWIND V4 UTILITY CLASS DEFINITIONS ────────── */
-@utility invex-root {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
-@utility font-display { font-family: var(--font-display); }
-@utility font-mono    { font-family: var(--font-mono); }
-
-/* Glow Utilities */
-@utility glow-indigo {
-  box-shadow: 0 0 24px var(--color-indigo-glow), 0 0 48px var(--color-indigo-glow);
-}
-@utility glow-gold {
-  box-shadow: 0 0 24px var(--color-gold-glow), 0 0 48px var(--color-gold-glow);
-}
-@utility text-glow-gold {
-  text-shadow: 0 0 20px rgba(250, 204, 21, 0.6);
-}
-@utility text-glow-indigo {
-  text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
-}
-
-/* Grid Noise Utility */
-@utility grid-noise {
-  background-image:
-    linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* Gradient Border Layout Utility */
-@utility gradient-border {
+.gradient-border {
   border: 1px solid transparent;
   background:
     linear-gradient(var(--color-card), var(--color-card)) padding-box,
     conic-gradient(from var(--gradient-angle), var(--color-indigo), var(--color-gold), var(--color-indigo)) border-box;
-  animation: var(--animate-border-spin);
+  animation: border-spin 4s linear infinite;
 }
 
-/* Text Shimmer Effect */
-@utility shimmer-text {
+/* Slot machine ticker animation */
+@keyframes slot-spin {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Confetti burst animation */
+@keyframes confetti-pop {
+  0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+  80%  { transform: scale(1.2) rotate(20deg); opacity: 1; }
+  100% { transform: scale(0) rotate(40deg); opacity: 0; }
+}
+
+/* Pulse ring */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
   background: linear-gradient(
     90deg,
     var(--color-ghost) 0%,
@@ -188,15 +177,36 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: var(--animate-shimmer);
+  animation: shimmer 3s linear infinite;
 }
 
-/* Accessibility: Overriding Animations if User Prefers Reduced Motion */
+/* Winner feed slide-in */
+@keyframes slide-in-right {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Orb ambient glow */
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Number count-up flash */
+@keyframes digit-flash {
+  0%   { color: var(--color-gold); text-shadow: 0 0 30px rgba(245, 197, 66, 0.9); }
+  100% { color: var(--color-ghost); text-shadow: none; }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
