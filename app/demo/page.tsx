@@ -35,6 +35,7 @@ function NavBar() {
       style={{
         background: "var(--color-surface)",
         borderBottom: "1px solid var(--color-border)",
+        paddingInline: "1rem"
       }}
     >
       <div className="flex items-center gap-3">
@@ -62,7 +63,7 @@ function NavBar() {
         </span>
         <span
           className="font-mono text-xs px-2 py-0.5 rounded-full"
-          style={{ background: "var(--color-indigo)", color: "#fff" }}
+          style={{ background: "var(--color-indigo)", color: "#fff", padding: "0.25rem 0.5rem" }}
         >
           Demo
         </span>
@@ -90,15 +91,16 @@ function PortfolioCard() {
       style={{
         background: "var(--color-card)",
         border: "1px solid var(--color-border)",
+        padding: "1.25rem"
       }}
     >
-      <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: "var(--color-muted)" }}>
+      <p className="font-mono text-xs uppercase tracking-widest mb-1" style={{ color: "var(--color-muted)", marginButtom: "0.25rem" }}>
         Total Portfolio Value
       </p>
       <p
         className="font-display font-bold mb-4"
-        style={{ fontSize: "2.2rem", color: "var(--color-ghost)" }}
-      >
+        style={{ fontSize: "2.2rem", color: "var(--color-ghost)", marginButtom: "1rem"}}
+      
         ${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       </p>
 
@@ -116,7 +118,7 @@ function PortfolioCard() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="font-mono text-xs" style={{ color: "var(--color-ghost)" }}>
+                  <span className="font-mono text-xs" style={{ color: "var(--color-ghost)", marginButtom: "0.25rem" }}>
                     {a.symbol}
                   </span>
                   <span
@@ -164,6 +166,7 @@ function GameCard({ name, prize, ends, players, type }: (typeof ACTIVE_GAMES)[0]
         background: "var(--color-card)",
         border: "1px solid var(--color-border)",
         transition: "border-color 0.2s",
+        padding: "1rem"
       }}
       onMouseEnter={(e) => (e.currentTarget.style.borderColor = typeColor ?? "var(--color-indigo)")}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
@@ -180,7 +183,7 @@ function GameCard({ name, prize, ends, players, type }: (typeof ACTIVE_GAMES)[0]
       </div>
 
       <div className="flex-1 min-w-0">
-        <p className="font-mono text-xs font-medium truncate mb-1" style={{ color: "var(--color-ghost)" }}>
+        <p className="font-mono text-xs font-medium truncate mb-1" style={{ color: "var(--color-ghost)", marginButtom: "0.25rem" }}>
           {name}
         </p>
         <p className="font-mono text-xs" style={{ color: "var(--color-muted)" }}>
@@ -204,6 +207,7 @@ function GameCard({ name, prize, ends, players, type }: (typeof ACTIVE_GAMES)[0]
           color: typeColor,
           border: `1px solid ${typeColor}40`,
           cursor: "pointer",
+          padding: "0.5rem 0.75rem"
         }}
       >
         Join
@@ -236,6 +240,7 @@ export default function DemoPage() {
           style={{
             background: "linear-gradient(135deg, rgba(91,79,232,0.12) 0%, rgba(245,197,66,0.06) 100%)",
             border: "1px solid var(--color-border)",
+            padding: "1rem 1.25rem",
           }}
         >
           <div>
@@ -252,6 +257,7 @@ export default function DemoPage() {
               background: "var(--color-gold)",
               color: "var(--color-void)",
               fontWeight: 600,
+              padding: "0.4rem 0.75rem",
             }}
           >
             Beta Access
@@ -273,7 +279,7 @@ export default function DemoPage() {
           {/* Right: active games */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between mb-1">
-              <p className="font-display font-semibold text-lg" style={{ color: "var(--color-ghost)" }}>
+              <p className="font-display font-semibold text-lg" style={{ color: "var(--color-ghost)", marginBottom: "0.25rem", }}>
                 Live Games
               </p>
               <span
@@ -297,6 +303,7 @@ export default function DemoPage() {
               style={{
                 background: "var(--color-card)",
                 border: "1px dashed var(--color-border)",
+                padding: "1rem",
               }}
             >
               <p className="font-mono text-xs" style={{ color: "var(--color-muted)" }}>
