@@ -3,26 +3,32 @@
 /* ── Invex Design Tokens ──────────────────────────────── */
 @theme {
   /* Palette */
-  --color-void:    #080B14;
-  --color-deep:    #0D1120;
-  --color-surface: #131829;
-  --color-card:    #1A1F35;
-  --color-border:  #252C4A;
+  /* Cartoon / Comic High-Chroma Palette */
+  --color-void:          #1A0B2E; /* Deep saturated comic grape background */
+  --color-deep:          #240F41; /* Rich purple shadow foundation */
+  --color-surface:       #31145A; /* Vibrant mid-tone grape */
+  --color-card:          #421B79; /* Saturated pop-art card base */
+  --color-border:        #FF007F; /* Blazing Hot Pink separator outlines */
 
-  --color-indigo:  #5B4FE8;
-  --color-indigo-bright: #7B70FF;
-  --color-indigo-glow:   rgba(91, 79, 232, 0.25);
+  /* Primary Accent: Hot Magenta / Neon Pink */
+  --color-indigo:        #FF007F; /* High-voltage neon pink */
+  --color-indigo-bright: #FF5EA5; /* Bubblegum highlight breakout */
+  --color-indigo-glow:   rgba(255, 0, 127, 0.45); /* Intense cartoon pink glow */
 
-  --color-gold:    #F5C542;
-  --color-gold-dim: #C49A1E;
-  --color-gold-glow: rgba(245, 197, 66, 0.2);
+  /* Secondary Accent: Laser Lime / Electric Yellow */
+  --color-gold:          #CCFF00; /* Radioactive lime-yellow */
+  --color-gold-dim:      #A3CC00; /* Deep cartoon chartreuse */
+  --color-gold-glow:     rgba(204, 255, 0, 0.35); /* Electric slime-lime radiation glow */
 
-  --color-green:   #22C55E;
-  --color-red:     #EF4444;
+  /* Status Utilities */
+  --color-green:         #00FFCC; /* Saturated plastic teal */
+  --color-red:           #FF3333; /* Bright tomato comic red */
 
-  --color-ghost:   #E8EDF7;
-  --color-muted:   #6B7280;
-  --color-dim:     #374151;
+  /* Comic Book High Contrast Typography */
+  --color-ghost:         #FFFFFF; /* Pure paper white text */
+  --color-muted:         #39FF14; /* Slime Green helper text / secondary callouts */
+  --color-dim:           #8E56FF; /* Saturated medium-violet utility text */
+
 
   /* Typography */
   --font-display: "Clash Display", var(--font-inter), sans-serif;
