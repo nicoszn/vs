@@ -57,10 +57,16 @@ export async function registerAction(
     .values({ name, email, passwordHash })
     .returning({ id: users.id });
 
+  if (!user) {
+    return { success: false, error: "Failed to create user account." };
+  }
+
   await createSession(user.id);
- // redirect("/dashboard");
-  // Clears the cache on the specified path to fetch fresh data automatically
+  
+  // Clears cache and updates layout components
   revalidatePath('/dashboard');
+
+  return { success: true };
 }
 
 // ── Login ─────────────────────────────────────────────────
@@ -98,7 +104,10 @@ export async function loginAction(
   }
 
   await createSession(user.id);
+  
   revalidatePath('/dashboard');
+
+  return { success: true };
 }
 
 // ── Logout ────────────────────────────────────────────────
