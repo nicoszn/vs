@@ -4,7 +4,7 @@ import { logoutAction } from "@/lib/actions";
 export default async function DashboardPage() {
   // Session is already validated by the layout, but we fetch user data here
   // for display. getSession() is cheap — it reads from the same cookie.
-  const user = await getSession();
+ // const user = await getSession();
 
   return (
     <main
@@ -41,17 +41,17 @@ export default async function DashboardPage() {
           className="font-display font-bold text-3xl mb-2"
           style={{ color: "var(--color-ghost)" }}
         >
-          Welcome back, {user!.name}
+          Welcome back, VS
         </h1>
 
         <p
           className="font-mono text-sm mb-8"
           style={{ color: "var(--color-muted)" }}
         >
-          {user!.email}
+          vs@example.com
         </p>
 
-        <form action={logoutAction}>
+        <form>
           <button
             type="submit"
             className="font-mono text-sm px-6 py-2.5 rounded-full w-full"
