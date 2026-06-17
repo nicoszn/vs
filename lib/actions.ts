@@ -112,5 +112,5 @@ export async function loginAction(
 // ── Logout ────────────────────────────────────────────────
 export async function logoutAction(): Promise<void> {
   await deleteSession();
-  revalidatePath('/dashboard');
+  revalidatePath('/');
 }
