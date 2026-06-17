@@ -47,7 +47,8 @@ export default function DiceGame() {
   const [rolls, setRolls] = useState<Roll[]>([]);
   const [streak, setStreak] = useState(0);
   const [displayNum, setDisplayNum] = useState<number | null>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>();
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
 
   const winChance = mode === "over" ? (100 - target) / 100 : target / 100;
   const multiplier = winChance > 0 ? parseFloat((0.99 / winChance).toFixed(4)) : 0;
