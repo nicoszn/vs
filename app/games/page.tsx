@@ -69,9 +69,9 @@ const LIVE_WINS = [
 // ── Hero banner images — your 3 uploads go here ──────────
 // Replace the src values with your actual image paths under /public/
 const HERO_IMAGES = [
-  { src: "/images/gaming-hero-1.png", alt: "Crypto gaming hero 1" },
-  { src: "/images/gaming-hero-2.png", alt: "Crypto gaming hero 2" },
-  { src: "/images/gaming-hero-3.png", alt: "Crypto gaming hero 3" },
+  { src: "/images/balls.WEBP", alt: "Crypto gaming hero 1" },
+  { src: "/images/bchart.WEBP", alt: "Crypto gaming hero 2" },
+  { src: "/images/dice.JPG", alt: "Crypto gaming hero 3" },
 ];
 
 function HeroBanner() {
