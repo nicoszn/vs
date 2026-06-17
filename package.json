@@ -14,6 +14,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "canvas-confetti": "1.9.4",
     "drizzle-orm": "^0.44.2",
     "@neondatabase/serverless": "^0.10.4",
     "@node-rs/argon2": "^2.0.2",
