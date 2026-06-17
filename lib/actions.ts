@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from 'next/cache';
 import { hash, verify } from "@node-rs/argon2";
 import { db } from "@/db";
 import { users } from "@/db/schema";
@@ -57,7 +58,9 @@ export async function registerAction(
     .returning({ id: users.id });
 
   await createSession(user.id);
-  redirect("/dashboard");
+ // redirect("/dashboard");
+  // Clears the cache on the specified path to fetch fresh data automatically
+  revalidatePath('/dashboard');
 }
 
 // ── Login ─────────────────────────────────────────────────
@@ -95,7 +98,7 @@ export async function loginAction(
   }
 
   await createSession(user.id);
-  redirect("/dashboard");
+  revalidatePath('/dashboard');
 }
 
 // ── Logout ────────────────────────────────────────────────
