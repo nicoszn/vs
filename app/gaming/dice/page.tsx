@@ -37,7 +37,7 @@ function DiceFace({ value }: { value: number }) {
 }
 
 export default function DiceGame() {
-  const [target, setTarget] = useState(50);
+    const [target, setTarget] = useState(50);
   const [mode, setMode] = useState<"over" | "under">("over");
   const [bet, setBet] = useState("10");
   const [balance, setBalance] = useState(1000);
@@ -47,8 +47,9 @@ export default function DiceGame() {
   const [rolls, setRolls] = useState<Roll[]>([]);
   const [streak, setStreak] = useState(0);
   const [displayNum, setDisplayNum] = useState<number | null>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
+  
+  // Refactored to fallback to undefined instead of null
+  const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
   const winChance = mode === "over" ? (100 - target) / 100 : target / 100;
   const multiplier = winChance > 0 ? parseFloat((0.99 / winChance).toFixed(4)) : 0;
@@ -61,12 +62,21 @@ export default function DiceGame() {
     setBalance((b) => parseFloat((b - betVal).toFixed(2)));
 
     let count = 0;
-    clearInterval(intervalRef.current);
+    
+    // Guarded to prevent compilation errors if the ref is empty on button click
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
     intervalRef.current = setInterval(() => {
       setDisplayNum(Math.floor(Math.random() * 100) + 1);
       count++;
       if (count >= 18) {
-        clearInterval(intervalRef.current);
+        // Guarded to safely clear the ticking interval inside the execution loop
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
+        
         const r = Math.floor(Math.random() * 100) + 1;
         const win =
           mode === "over" ? r > target : r < target;
@@ -90,6 +100,7 @@ export default function DiceGame() {
       }
     }, 60);
   };
+
 
   return (
     <main style={{ minHeight: "100dvh", background: "var(--color-void)", padding: "1.5rem" }}>
