@@ -1,5 +1,5 @@
-import AuthShell from "@/components/auth/AuthShell";
-import RegisterForm from "@/components/auth/RegisterForm";
+import AuthShell from "@/components/AuthShell";
+import RegisterForm from "@/components/RegisterForm";
 
 export const metadata = { title: "Create account — Invex" };
 
