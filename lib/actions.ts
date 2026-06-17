@@ -24,13 +24,13 @@ export async function registerAction(
 
   // Validate
   if (!name || name.length < 2) {
-    return { success: false, error: "Name must be at least 2 characters." };
+    redirect("/");
   }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { success: false, error: "Invalid email address." };
+    redirect("/");
   }
   if (!password || password.length < 8) {
-    return { success: false, error: "Password must be at least 8 characters." };
+    redirect("/");
   }
 
   // Check existing
@@ -41,7 +41,7 @@ export async function registerAction(
     .limit(1);
 
   if (existing.length > 0) {
-    return { success: false, error: "An account with this email already exists." };
+    redirect("/");
   }
 
   // Hash & insert
@@ -58,7 +58,7 @@ export async function registerAction(
     .returning({ id: users.id });
 
   if (!user) {
-    return { success: false, error: "Failed to create user account." };
+    redirect("/");
   }
 
   await createSession(user.id);
@@ -78,7 +78,7 @@ export async function loginAction(
   const password = formData.get("password") as string;
 
   if (!email || !password) {
-    return { success: false, error: "Email and password are required." };
+    redirect("/");
   }
 
   const result = await db
@@ -100,7 +100,7 @@ export async function loginAction(
     }));
 
   if (!user || !validPassword) {
-    return { success: false, error: "Invalid email or password." };
+    redirect("/");
   }
 
   await createSession(user.id);
