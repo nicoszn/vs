@@ -113,7 +113,7 @@ function HeroBanner() {
                 gap: "1rem",
               }}
             >
-              {/* ─── REPLACE THIS BLOCK with your image ─────────────────
+            
                   <Image
                     src={HERO_IMAGES[active].src}
                     alt={HERO_IMAGES[active].alt}
@@ -121,7 +121,7 @@ function HeroBanner() {
                     style={{ objectFit: "cover" }}
                     priority
                   />
-              ──────────────────────────────────────────────────────── */}
+              
               <span style={{ fontSize: "4rem" }}>
                 {active === 0 ? "🚀" : active === 1 ? "💎" : "🎰"}
               </span>
