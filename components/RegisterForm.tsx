@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { registerAction } from "@/lib/actions";
 
 const inputStyle = {
@@ -18,10 +19,22 @@ const inputStyle = {
 
 export default function RegisterForm() {
   const [state, action, pending] = useActionState(registerAction, null);
+  const router = useRouter();
+
+  // Watch action state changes to route cleanly without breaking runtime frames
+  useEffect(() => {
+    if (!state) return;
+
+    if (state.success) {
+      router.push("/dashboard");
+    } else if (state.redirectToHome) {
+      router.push("/");
+    }
+  }, [state, router]);
 
   return (
     <form action={action} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      {state && !state.success && (
+      {state && !state.success && state.error && (
         <div
           className="font-mono text-xs px-4 py-3 rounded-lg"
           style={{
