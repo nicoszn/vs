@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { revalidatePath } from 'next/cache';
 import { hash, verify } from "@node-rs/argon2";
 import { db } from "@/db";
@@ -11,7 +10,7 @@ import { createSession, deleteSession } from "@/lib/session";
 // ── Shared result type ────────────────────────────────────
 type ActionResult =
   | { success: true }
-  | { success: false; error: string };
+  | { success: false; error: string; redirectToHome?: boolean };
 
 // ── Register ──────────────────────────────────────────────
 export async function registerAction(
@@ -24,13 +23,13 @@ export async function registerAction(
 
   // Validate
   if (!name || name.length < 2) {
-    redirect("/");
+    return { success: false, error: "Name must be at least 2 characters.", redirectToHome: true };
   }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    redirect("/");
+    return { success: false, error: "Invalid email address.", redirectToHome: true };
   }
   if (!password || password.length < 8) {
-    redirect("/");
+    return { success: false, error: "Password must be at least 8 characters.", redirectToHome: true };
   }
 
   // Check existing
@@ -41,7 +40,7 @@ export async function registerAction(
     .limit(1);
 
   if (existing.length > 0) {
-    redirect("/");
+    return { success: false, error: "An account with this email already exists." };
   }
 
   // Hash & insert
@@ -58,12 +57,12 @@ export async function registerAction(
     .returning({ id: users.id });
 
   if (!user) {
-    redirect("/");
+    return { success: false, error: "Failed to create user account.", redirectToHome: true };
   }
 
   await createSession(user.id);
   
-  // Clears cache and updates layout components
+  // Refresh layout components securely
   revalidatePath('/dashboard');
 
   return { success: true };
@@ -78,7 +77,7 @@ export async function loginAction(
   const password = formData.get("password") as string;
 
   if (!email || !password) {
-    redirect("/");
+    return { success: false, error: "Email and password are required.", redirectToHome: true };
   }
 
   const result = await db
@@ -100,7 +99,7 @@ export async function loginAction(
     }));
 
   if (!user || !validPassword) {
-    redirect("/");
+    return { success: false, error: "Invalid email or password.", redirectToHome: true };
   }
 
   await createSession(user.id);
